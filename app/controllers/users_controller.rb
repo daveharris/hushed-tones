@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def new
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.save
+    redirect_to users_path
   end
 
   def update
