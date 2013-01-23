@@ -2,8 +2,17 @@
   padding: 0px;
 
   img {
-    height: 58px;
+    height: 60px;
     margin-top: -10px;
     margin-bottom: -10px;
+  } 
+}
+
+.navbar .nav > li > a.tumblr-link {
+  padding: 0px;
+
+  img {
+    margin-top: 2px;
+    height: 35px;
   } 
 }
