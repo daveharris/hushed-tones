@@ -6,9 +6,11 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 
+gem 'letmein'
 
 group :development do
 	gem 'thin'
+  gem 'rspec-rails'
 end
 
 group :assets do
@@ -17,4 +19,3 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
