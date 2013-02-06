@@ -13,6 +13,11 @@ group :development do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
+  gem 'guard-rspec'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

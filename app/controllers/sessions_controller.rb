@@ -6,8 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    params.symbolize_keys
-    puts "==== params[:user]: #{params[:user]}"
     @session = UserSession.new(params[:user])
     @session.save!
     session[:current_user] = @session.user
