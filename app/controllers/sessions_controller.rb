@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_filter :new_user
+  before_filter :new_user, only: [:new, :create]
   
   def new
   end
@@ -15,6 +15,12 @@ class SessionsController < ApplicationController
     rescue LetMeIn::Error
       flash.now[:error] = "Wrong email address or password"
       render action: :new
+  end
+
+  def destroy
+    session[:current_user] = nil
+    flash[:notice] = "You are now logged out!"
+    redirect_to root_path
   end
 
   private
