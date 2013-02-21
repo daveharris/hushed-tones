@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
+  before_filter :find_post, only: [ :show, :edit, :update, :destroy ]
+
 	def index
 		@posts = Post.all
 	end
 
 	def show
-		@post = Post.find params[:id]
 	end
 
 	def new
@@ -13,22 +14,27 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-    @post = Post.find(params[:id])
   end
 
   def create
     @post = Post.new(params[:post])
-    @post.save
+    @post.save!
     redirect_to posts_path
   end
 
   def update
-    @post = post.find(params[:id])
     @post.update_attributes(params[:post])
+    redirect_to posts_path
   end
 
   def destroy
-    @post = post.find(params[:id])
     @post.destroy
+    redirect_to posts_path
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
