@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,27 +11,47 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
+
   <body>
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
-    <div id="main" role="main">
+    <div id="wrap">
+      <header class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/navigation' %>
+          </div>
+        </nav>
+      </header>
+      
       <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h1>Welcome to Michaela's Blog</h1>
+            <blockquote class="pull-right">
+              <p>Always aim for the Moon, even if you miss, you'll land among the stars</p>
+              <small>W. Clement Stone</small>
+            </blockquote>
+          </div>
+        </div>
+
         <div class="content">
-           <div class="row">
+          <div class="row">
             <div class="span12">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
           </div>
-          <footer>
-          </footer>
         </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div> <!-- end of .container -->
+      <div id="push"></div>
+    </div> <!-- end of #wrap -->
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">
+          A site made with love by <%= link_to 'Dave Harris', 'http://twitter.com/daveharrisnz'%> using <%= link_to 'Ruby on Rails', 'http://rubyonrails.org' %> and <%= link_to 'Bootstrap', 'http://twitter.github.io/bootstrap' %>/<%= link_to 'Bootswatch', 'http://bootswatch.com/' %>
+        </p>
+      </div>
+    </div> <!-- end of #footer -->
+
   </body>
 </html>
