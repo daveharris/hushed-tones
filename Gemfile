@@ -4,12 +4,11 @@ gem 'rails', '~> 3.2'
 gem 'sqlite3'
 
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 
 gem 'letmein'
 
 group :development do
-	gem 'thin'
+  gem 'thin'
   gem 'rspec-rails'
 end
 
@@ -19,6 +18,8 @@ group :test do
 end
 
 group :assets do
+  gem 'bootstrap-sass'
+  gem 'bootswatch-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 

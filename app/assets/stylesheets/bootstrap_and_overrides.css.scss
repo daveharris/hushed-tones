@@ -1,6 +1,8 @@
+@import "bootswatch/spacelab/variables";
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+@import "bootswatch/spacelab/bootswatch";
 
 .content {
   background-color: #eee;
