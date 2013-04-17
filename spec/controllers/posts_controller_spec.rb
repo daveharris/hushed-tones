@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe PostsController do
-  let(:mock_post) { mock(:post).as_null_object }
+  let(:user) { mock_model(User) }
+  let(:mock_post) { mock_model(Post) }
 
   describe "GET index" do
     it "should assign @posts as all the posts" do
@@ -36,11 +37,22 @@ describe PostsController do
   end
 
   describe "POST create" do
-    {id: '1', body: 'body', title: 'title'}.each do |attribute, value|
-      it "should set the #{attribute}" do
-        post :create, post: {id: '1', body: 'body', title: 'title'}
-        assigns(:post).send(attribute).to_s.should eq value
-      end
+    before(:each) do
+      controller.stub(:find_user) { user }
+      Post.stub(:new) { mock_post }
+      mock_post.stub(:save!)
+      mock_post.stub(:user=).with(user)
+    end
+
+    it "should set the attributes on the Post" do
+      Post.should_receive(:new).with({'id' => '1', 'body' => 'body', 'title' => 'title'})
+      post :create, post: {id: '1', body: 'body', title: 'title'}
+    end
+
+    it "should set the user on the post" do
+      controller.should_receive(:find_user) { user }
+      mock_post.should_receive(:user=).with(user)
+      post :create, post: {id: '1', body: 'body', title: 'title'}
     end
 
     it "should should save the post" do
@@ -56,53 +68,78 @@ describe PostsController do
   end
 
   describe "POST update" do
+    before do
+      controller.stub(:find_user) { user }
+      Post.stub(:find) { mock_post }
+
+      mock_post.stub(:update_attributes)
+      mock_post.stub(:user=).with(user)
+    end
+
     it "should find the Post" do
       Post.should_receive(:find).with('1') { mock_post }
       post :update, id: '1'
     end
 
+    it "should set the user on the post" do
+      controller.should_receive(:find_user) { user }
+      mock_post.should_receive(:user=).with(user)
+      post :update, id: '1'
+    end
+
     it "should update the Post" do
-      Post.stub(:find).with('1') { mock_post }
       mock_post.should_receive(:update_attributes).with('title' => 'title')
       post :update, { id: '1', post: {title: 'title'} }
     end
 
     it "should assign the updated Post to @post" do
-      Post.stub(:find) { mock_post }
       mock_post.stub(:update_attributes) { mock_post }
       post :update, id: '1'
       assigns(:post).should eq mock_post
     end
 
     it "should redirect to /posts" do
-      Post.stub(:find) { mock_post }
       post :update, id: '1'
       response.should redirect_to posts_path
     end
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      Post.stub(:find) { mock_post }
+    end
+
     it "should find the Post" do
       Post.should_receive(:find).with('1') { mock_post }
       delete :destroy, id: '1'
     end
 
     it "should destroy the Post" do
-      Post.stub(:find) { mock_post }
       mock_post.should_receive(:destroy)
       delete :destroy, id: '1'
     end
 
     it "should assign @post as deleted Post" do
-      Post.stub(:find) { mock_post }
-      get :edit, id: '1'
+      delete :destroy, id: '1'
       assigns(:post).should eq mock_post
     end
 
     it "should redirect to /posts" do
-      Post.stub(:find) { mock_post }
-      post :update, id: '1'
+      delete :destroy, id: '1'
       response.should redirect_to posts_path
+    end
+  end
+
+  describe "find_user" do
+    it "should find the user from the logged in user in session" do
+      user = mock(:user)
+      controller.stub(:session) { {current_user: user} }
+      controller.send(:find_user).should eq user
+    end
+
+    it "should return nil if user not logged in" do
+      controller.stub(:session) { {} }
+      controller.send(:find_user).should be_nil
     end
   end
 end

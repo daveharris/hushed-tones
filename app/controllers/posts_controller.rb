@@ -18,11 +18,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+    @post.user = find_user
+
     @post.save!
     redirect_to posts_path
   end
 
   def update
+    @post.user = find_user
     @post.update_attributes(params[:post])
     redirect_to posts_path
   end
@@ -36,5 +39,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def find_user
+    session[:current_user]
   end
 end
