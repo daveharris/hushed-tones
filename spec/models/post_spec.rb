@@ -16,4 +16,12 @@ describe Post do
       end
     end
   end
+
+  describe "#display_date" do
+    it "should return the date in human readable form" do
+      # Not using Timecop so I don't have to save record
+      post.stub(:created_at) { Time.parse("2013-04-19 15:49:20 +1200") }
+      post.display_date.should eq "Fri Apr 19 03:49PM"
+    end
+  end
 end

@@ -1,6 +1,28 @@
-<div class="center">
-  <h1>Recent posts</h1>
+<h1 class="center page-header">Recent posts</h1>
 
+<% @posts.each do |post| %>
+  <div class="post">
+    <h2 class="span12">
+      <%= link_to post.title, post, class: 'pull-left' %>
+      <small class="pull-right">posted <%= post.created_at.strftime('%a %b %m %I:%M%p') %></small>
+    </h2>
+    <p class="span12"><%= post.body.html_safe %></p>
+
+    <div class="span12">
+      <span class="span9">
+        <span>Tagged as:</span>
+        <% post.tags.each do |tag| %>
+          <span class="label label-inverse"><%= tag.name %></span>
+        <% end %>
+      </span>
+      <span class="span2">
+        Posted by <%= post.user.name %>
+      <span>
+    </div>
+  </div>
+<% end %>
+
+<% if false %>
   <table class="table table-bordered table-striped table-hover">
     <tr>
       <th>Title</th>
@@ -10,7 +32,7 @@
       <th></th>
     </tr>
 
-  <% @posts.each do |post| %>
+ 
     <tr>
       <td><%= link_to post.title, post %></td>
       <td><%= post.body %></td>
@@ -24,9 +46,8 @@
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-  <% end %>
+  
   </table>
+<% end %>
 
-  <br />
-
-</div>
+<br />

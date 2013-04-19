@@ -9,12 +9,13 @@ gem 'letmein'
 
 group :development do
   gem 'thin'
-  gem 'rspec-rails'
 end
 
 group :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
   gem 'guard-rspec'
+  gem 'rspec-rails'
+  gem 'timecop'
 end
 
 group :assets do
