@@ -9,6 +9,7 @@ gem 'letmein'
 
 group :development do
   gem 'thin'
+  gem 'quiet_assets'
 end
 
 group :test do

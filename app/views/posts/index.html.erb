@@ -2,23 +2,24 @@
 
 <% @posts.each do |post| %>
   <div class="post">
-    <h2 class="span12">
+    <h2 class="row">
       <%= link_to post.title, post, class: 'pull-left' %>
-      <small class="pull-right">posted <%= post.created_at.strftime('%a %b %m %I:%M%p') %></small>
+      <small class="pull-right">posted <%= post.display_date %></small>
     </h2>
-    <p class="span12"><%= post.body.html_safe %></p>
+    <p class="row"><%= post.body.html_safe %></p>
 
-    <div class="span12">
+    <div class="row">
       <span class="span9">
         <span>Tagged as:</span>
         <% post.tags.each do |tag| %>
           <span class="label label-inverse"><%= tag.name %></span>
         <% end %>
       </span>
-      <span class="span2">
+      <span class="span3">
         Posted by <%= post.user.name %>
-      <span>
+      </span>
     </div>
+
   </div>
 <% end %>
 
