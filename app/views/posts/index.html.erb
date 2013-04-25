@@ -3,22 +3,37 @@
 <% @posts.each do |post| %>
   <div class="post">
     <h2 class="row">
-      <%= link_to post.title, post, class: 'pull-left' %>
-      <small class="pull-right">posted <%= post.display_date %></small>
+      <div class="span9">
+        <%= link_to post.title, post, class: 'pull-left' %>
+      </div>
+
+      <div class="span3">
+        <small class="pull-right">posted <%= post.display_date %></small>
+      </div>
     </h2>
-    <p class="row"><%= post.body.html_safe %></p>
 
     <div class="row">
-      <span class="span9">
+      <p class="span12"><%= post.body.html_safe %></p>
+    </div>
+
+    <div class="row">
+      <span class="span10">
         <span>Tagged as:</span>
         <% post.tags.each do |tag| %>
           <span class="label label-inverse"><%= tag.name %></span>
         <% end %>
       </span>
-      <span class="span3">
-        Posted by <%= post.user.name %>
+      <span class="span2">
+        <small class="pull-right">Posted by <%= post.user.name %></small>
       </span>
     </div>
+
+    <% if user_logged_in? %>
+      <div class="row">
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
 
   </div>
 <% end %>
