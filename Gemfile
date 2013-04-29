@@ -10,6 +10,8 @@ gem 'letmein'
 group :development do
   gem 'thin'
   gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
