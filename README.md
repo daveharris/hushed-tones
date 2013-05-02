@@ -10,3 +10,4 @@ A work in progress
 - [ ] A Post now needs a user, but there is error handling when not logged in
 - [ ] Styling login page
 - [ ] Styling Post edit and show pages
+- [ ] Use Markdown/GFM/Textile for post formatting instead of pure html
