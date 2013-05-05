@@ -17,6 +17,21 @@ describe Post do
     end
   end
 
+  describe "#body_html" do
+    before(:each) do
+      post.body = 'h1. Title'
+    end
+
+    it "should use RedCloth to convert plain text to html" do
+      RedCloth.should_receive(:new).with("h1. Title") {mock(:redclock, to_html: '')}
+      post.body_html
+    end
+
+    it "should convert the body attribute to html" do
+      post.body_html.should eq "<h1>Title</h1>"
+    end
+  end
+
   describe "#display_date" do
     it "should return the date in human readable form" do
       # Not using Timecop so I don't have to save record

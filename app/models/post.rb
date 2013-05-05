@@ -7,6 +7,10 @@ class Post < ActiveRecord::Base
 
   validates :title, :body, :user_id, presence: true
 
+  def body_html
+    RedCloth.new(self.body).to_html if self.body
+  end
+
   def display_date
     self.created_at.localtime.strftime('%a %b %d %I:%M%p')
   end

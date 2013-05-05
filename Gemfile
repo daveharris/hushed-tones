@@ -7,6 +7,8 @@ gem 'jquery-rails'
 
 gem 'letmein'
 
+gem 'RedCloth'
+
 group :development do
   gem 'thin'
   gem 'quiet_assets'
