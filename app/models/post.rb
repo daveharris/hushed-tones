@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_many :tags
 
   attr_accessible :body, :title, :tags_attributes, :user
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :tags, :reject_if => :all_blank
 
   validates :title, :body, :user_id, presence: true
 

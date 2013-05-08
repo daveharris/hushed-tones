@@ -17,6 +17,14 @@ describe Post do
     end
   end
 
+  describe "#tags" do
+    it "should not create a tag if it's empty" do
+      post.tags_attributes = {"0"=>{"name"=>""}}
+      post.save!
+      post.tags.size.should eq 0
+    end
+  end
+
   describe "#body_html" do
     before(:each) do
       post.body = 'h1. Title'
