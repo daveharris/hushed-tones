@@ -5,6 +5,11 @@
     <h2 class="row">
       <div class="span9">
         <%= link_to post.title, post, class: 'pull-left' %>
+
+        <% if user_logged_in? %>
+          <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-small btn-primary btn-edit' %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger' %>
+        <% end %>
       </div>
 
       <div class="span3">
@@ -13,14 +18,16 @@
     </h2>
 
     <div class="row">
-      <p class="span12"><%= post.body_html.try(:html_safe) %></p>
+      <span class="span12"><%= post.body_html.try(:html_safe) %></span>
     </div>
 
     <div class="row">
       <span class="span10">
-        <span>Tagged as:</span>
-        <% post.tags.each do |tag| %>
-          <span class="label label-inverse"><%= tag.name %></span>
+        <% if post.tags.any? %>
+          <span><i class="icon-tags"></i> Tagged with:</span>
+          <% post.tags.each do |tag| %>
+            <span class="label label-inverse"><%= tag.name %></span>
+          <% end %>
         <% end %>
       </span>
       <span class="span2">
@@ -28,12 +35,7 @@
       </span>
     </div>
 
-    <% if user_logged_in? %>
-      <div class="row">
-        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-small btn-primary' %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger' %>
-      </div>
-    <% end %>
+    
 
   </div>
 <% end %>
