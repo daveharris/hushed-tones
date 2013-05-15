@@ -9,5 +9,5 @@ A work in progress
 - [x] Everytime a post is updated, a new empty tag is created
 - [ ] A Post now needs a user, but there is error handling when not logged in
 - [x] Styling login page
-- [ ] Styling Post edit and show pages
+- [x] Styling Post edit and show pages
 - [x] Use Markdown/GFM/Textile for post formatting instead of pure html

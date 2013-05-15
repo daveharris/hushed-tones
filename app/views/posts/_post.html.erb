@@ -1,0 +1,39 @@
+<div class="post">
+  <h2 class="row">
+    <div class="span9">
+      <%= link_to post.title, post, class: 'pull-left' %>
+
+      <% if user_logged_in? %>
+        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-small btn-primary btn-edit' %>
+        <%= link_to '<i class="icon-warning-sign icon-white"></i>'.html_safe + ' Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+
+    <div class="span3">
+      <small class="pull-right">posted <%= post.display_date %></small>
+    </div>
+  </h2>
+
+  <div class="row">
+    <span class="span12"><%= post.body_html.try(:html_safe) %></span>
+  </div>
+
+  <a class="btn btn-warning" href="#">
+    <i class="icon-warning-sign icon-white"></i> Warning
+  </a>
+
+
+  <div class="row">
+    <span class="span10">
+      <% if post.tags.any? %>
+        <span><i class="icon-tags"></i> Tagged with:</span>
+        <% post.tags.each do |tag| %>
+          <span class="label label-inverse"><%= tag.name %></span>
+        <% end %>
+      <% end %>
+    </span>
+    <span class="span2">
+      <small class="pull-right">Posted by <%= post.user.name %></small>
+    </span>
+  </div>
+</div>
