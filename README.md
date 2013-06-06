@@ -11,3 +11,5 @@ A work in progress
 - [x] Styling login page
 - [x] Styling Post edit and show pages
 - [x] Use Markdown/GFM/Textile for post formatting instead of pure html
+- [ ] Add images to posts
+- [ ] Slugify Post URLs
