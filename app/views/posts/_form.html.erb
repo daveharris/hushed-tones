@@ -1,5 +1,5 @@
 <% @post.tags.build %>
-<%= form_for(@post, html: {class: 'form-horizontal well span9'}) do |post_form| %>
+<%= form_for(@post, html: {class: 'form-horizontal well span9', multipart: true}) do |post_form| %>
   <% if @post.errors.any? %>
     <div id="errorExplanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -23,6 +23,13 @@
       <%= post_form.label :body %>
       <div class="controls">
         <%= post_form.text_area :body, class: 'input-xxlarge' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= post_form.label :picture %>
+      <div class="controls">
+        <%= post_form.file_field :picture %>
       </div>
     </div>
     

@@ -18,6 +18,12 @@
     <span class="span12"><%= post.body_html.try(:html_safe) %></span>
   </div>
 
+  <% if post.picture? %>
+    <div class="row">
+      <span class="span12"><%= image_tag(post.picture.thumb.url) %></span>
+    </div>
+  <% end %>
+
   <div class="row">
     <span class="span12">
       <span class="author">

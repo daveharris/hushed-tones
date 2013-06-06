@@ -7,9 +7,11 @@ A work in progress
 
 ## TODO
 - [x] Everytime a post is updated, a new empty tag is created
-- [ ] A Post now needs a user, but there is error handling when not logged in
+- [x] A Post now needs a user, but there is error handling when not logged in
 - [x] Styling login page
 - [x] Styling Post edit and show pages
 - [x] Use Markdown/GFM/Textile for post formatting instead of pure html
-- [ ] Add images to posts
+- [x] Add images to posts
 - [ ] Slugify Post URLs
+- [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization
+- [ ] Add [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
