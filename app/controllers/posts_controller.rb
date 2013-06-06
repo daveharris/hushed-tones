@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_filter :find_post, only: [ :show, :edit, :update, :destroy ]
+  before_filter :authenticate_user!, except: [ :index, :show, :new ]
 
 	def index
 		@posts = Post.all
@@ -18,16 +19,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    @post.user = find_user
+    @post.user = current_user
 
     @post.save!
-    redirect_to posts_path
+    redirect_to post_path(@post)
   end
 
   def update
-    @post.user = find_user
+    @post.user = current_user
     @post.update_attributes(params[:post])
-    redirect_to posts_path
+    redirect_to post_path(@post)
   end
 
   def destroy
@@ -39,9 +40,5 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
-  end
-
-  def find_user
-    session[:current_user]
   end
 end

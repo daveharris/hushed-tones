@@ -38,10 +38,10 @@ describe PostsController do
 
   describe "POST create" do
     before(:each) do
-      controller.stub(:find_user) { user }
+      controller.stub(:session) { {current_user: user} }
       Post.stub(:new) { mock_post }
       mock_post.stub(:save!)
-      mock_post.stub(:user=).with(user)
+      mock_post.stub(:user=)
     end
 
     it "should set the attributes on the Post" do
@@ -50,26 +50,24 @@ describe PostsController do
     end
 
     it "should set the user on the post" do
-      controller.should_receive(:find_user) { user }
       mock_post.should_receive(:user=).with(user)
       post :create, post: {id: '1', body: 'body', title: 'title'}
     end
 
     it "should should save the post" do
-      Post.stub(:new) { mock_post }
       mock_post.should_receive(:save!)
       post :create, post: {id: '1', body: 'body', title: 'title'}
     end
 
     it "should redirect to /posts after saving" do
       post :create, post: {id: '1', body: 'body', title: 'title'}
-      response.should redirect_to(posts_path)
+      response.should redirect_to post_path(mock_post)
     end
   end
 
   describe "POST update" do
     before do
-      controller.stub(:find_user) { user }
+      controller.stub(:session) { {current_user: user} }
       Post.stub(:find) { mock_post }
 
       mock_post.stub(:update_attributes)
@@ -82,7 +80,6 @@ describe PostsController do
     end
 
     it "should set the user on the post" do
-      controller.should_receive(:find_user) { user }
       mock_post.should_receive(:user=).with(user)
       post :update, id: '1'
     end
@@ -93,19 +90,19 @@ describe PostsController do
     end
 
     it "should assign the updated Post to @post" do
-      mock_post.stub(:update_attributes) { mock_post }
       post :update, id: '1'
       assigns(:post).should eq mock_post
     end
 
     it "should redirect to /posts" do
       post :update, id: '1'
-      response.should redirect_to posts_path
+      response.should redirect_to post_path(mock_post)
     end
   end
 
   describe "DELETE destroy" do
     before(:each) do
+      controller.stub(:session) { {current_user: user} }
       Post.stub(:find) { mock_post }
     end
 
@@ -127,19 +124,6 @@ describe PostsController do
     it "should redirect to /posts" do
       delete :destroy, id: '1'
       response.should redirect_to posts_path
-    end
-  end
-
-  describe "find_user" do
-    it "should find the user from the logged in user in session" do
-      user = mock(:user)
-      controller.stub(:session) { {current_user: user} }
-      controller.send(:find_user).should eq user
-    end
-
-    it "should return nil if user not logged in" do
-      controller.stub(:session) { {} }
-      controller.send(:find_user).should be_nil
     end
   end
 end
