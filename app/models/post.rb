@@ -7,7 +7,9 @@ class Post < ActiveRecord::Base
   attr_accessible :body, :title, :tags_attributes, :user, :picture
   accepts_nested_attributes_for :tags, :reject_if => :all_blank
 
-  validates :title, :body, :user_id, presence: true
+  validates :title, :body, :user_id, :slug, presence: true
+
+  before_validation :slugify
 
   def body_html
     RedCloth.new(self.body).to_html if self.body
@@ -15,5 +17,15 @@ class Post < ActiveRecord::Base
 
   def display_date
     self.created_at.localtime.strftime('%a %b %d %I:%M%p')
+  end
+
+  def to_param
+    self.slug
+  end
+
+  private
+
+  def slugify
+    self.slug = self.title.parameterize
   end
 end

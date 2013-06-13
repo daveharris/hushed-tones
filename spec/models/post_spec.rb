@@ -10,10 +10,15 @@ describe Post do
     end
 
     [:title, :body, :user_id].each do |attribute|
-      it "should validate the title exists" do
-        post.send("#{attribute}=", "")
+      it "should validate that the #{attribute} exists" do
+        post.public_send("#{attribute}=", "")
         post.valid?.should be_false
       end
+    end
+
+    it "should validate the slug generates a non-empty string" do
+      post.title = '&'
+      post.valid?.should be_false
     end
   end
 
@@ -45,6 +50,22 @@ describe Post do
       # Not using Timecop so I don't have to save record
       post.stub(:created_at) { Time.parse("2013-04-19 15:49:20 +1200") }
       post.display_date.should eq "Fri Apr 19 03:49PM"
+    end
+  end
+
+  describe "#to_param" do
+    it "should return a parameterized title" do
+      post.title = 'The Title & Description'
+      post.save!
+      post.to_param.should eq 'the-title-description'
+    end
+  end
+
+  describe "#slugify" do
+    it "should set the slug when saving" do
+      post.title = 'post title'
+      post.save
+      post.slug.should eq 'post-title'
     end
   end
 end

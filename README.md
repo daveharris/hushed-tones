@@ -12,6 +12,6 @@ A work in progress
 - [x] Styling Post edit and show pages
 - [x] Use Markdown/GFM/Textile for post formatting instead of pure html
 - [x] Add images to posts
-- [ ] Slugify Post URLs
+- [x] Slugify Post URLs
 - [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization
 - [ ] Add [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
