@@ -1,16 +1,5 @@
-.navbar .nav > li > a.twitter-link {
-  padding: 0px;
-
-  img {
-    margin-top: -10px;
-    margin-bottom: -10px;
-  } 
-}
-
-.navbar .nav > li > a.tumblr-link {
-  padding: 0px;
-
-  img {
-    margin-top: 2px;
-  } 
+.navbar {
+  .fc-webicon {
+    margin: 5px 5px 0px 0px;
+  }
 }

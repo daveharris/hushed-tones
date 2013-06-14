@@ -92,6 +92,7 @@ GEM
     mime-types (1.23)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
+    modernizr-rails (2.0.6)
     multi_json (1.7.7)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -188,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   letmein
   mini_magick
+  modernizr-rails
   quiet_assets
   rails (~> 3.2)
   rb-fsevent
