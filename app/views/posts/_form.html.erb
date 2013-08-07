@@ -1,5 +1,5 @@
 <% @post.tags.build %>
-<%= form_for(@post, html: {class: 'form-horizontal well span9', multipart: true}) do |post_form| %>
+<%= form_for(@post, html: {id: 'edit-post', class: 'form-horizontal well span9', multipart: true}) do |post_form| %>
   <% if @post.errors.any? %>
     <div id="errorExplanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -13,29 +13,29 @@
  
   <fieldset>
     <div class="control-group">
-      <%= post_form.label :title %>
+      <%= post_form.label :title, class: 'control-label' %>
       <div class="controls">
         <%= post_form.text_field :title, class: 'input-xxlarge' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= post_form.label :body %>
+      <%= post_form.label :body, class: 'control-label' %>
       <div class="controls">
         <%= post_form.text_area :body, class: 'input-xxlarge' %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= post_form.label :picture %>
+      <%= post_form.label :picture, class: 'control-label' %>
       <div class="controls">
         <%= post_form.file_field :picture %>
       </div>
     </div>
     
-    <h2>Tags</h2>
-    <%= render :partial => 'tags/form',
-               :locals => {:form => post_form} %>
+    <h3>Tags</h3>
+    <%= render :partial => 'tags/form', locals: {form: post_form} %>
+
     <div class="actions">
       <%= post_form.submit %>
     </div>

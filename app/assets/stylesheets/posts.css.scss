@@ -14,4 +14,18 @@
   i {
     margin-right: 2px;
   }
+
+  img {
+    margin: 0 0 10.5px;
+  }
+}
+
+#edit-post {
+  label.checkbox {
+    display: inline;
+  }
+
+  input[type="checkbox"] {
+    margin-bottom: 5px;
+  }
 } 
