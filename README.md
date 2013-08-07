@@ -13,5 +13,6 @@ A work in progress
 - [x] Use Markdown/GFM/Textile for post formatting instead of pure html
 - [x] Add images to posts
 - [x] Slugify Post URLs
+- [x] Delete tags from posts
 - [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization
 - [ ] Add [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
