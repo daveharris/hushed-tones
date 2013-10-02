@@ -68,4 +68,16 @@ describe Post do
       post.slug.should eq 'post-title'
     end
   end
+
+  describe "#autosave_associated_records_for_tags" do
+    it "should add existing tag if exists in database" do
+      existing_tag = Tag.create(name: "ruby")
+      new_tag = Tag.new(name: "rails")
+      post.tags = [Tag.new(name: "ruby"), new_tag]
+      post.save!
+
+      post.reload.tags.first.name.should eq 'ruby'
+      post.tags.last.name.should eq 'rails'
+    end
+  end
 end

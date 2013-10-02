@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_many :tags
+  has_many :tags, autosave: true
   
   mount_uploader :picture, PictureUploader
 
@@ -27,5 +27,22 @@ class Post < ActiveRecord::Base
 
   def slugify
     self.slug = self.title.parameterize
+  end
+
+  # before_save hook to ensure that existing tags are 
+  # looked up rather than re-created
+  # See http://stackoverflow.com/questions/9024745
+  def autosave_associated_records_for_tags
+    valid_tags = []
+
+    self.tags.each do |tag|
+      if existing_tag = Tag.where(name: tag.name).first
+        valid_tags << existing_tag
+      else
+        valid_tags << tag
+      end
+    end
+
+    self.tags << valid_tags
   end
 end
