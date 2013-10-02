@@ -36,7 +36,7 @@ describe Post do
     end
 
     it "should use RedCloth to convert plain text to html" do
-      RedCloth.should_receive(:new).with("h1. Title") {mock(:redclock, to_html: '')}
+      RedCloth.should_receive(:new).with("h1. Title") { double(:redclock, to_html: '') }
       post.body_html
     end
 

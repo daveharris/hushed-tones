@@ -14,7 +14,8 @@ A work in progress
 - [x] Add images to posts
 - [x] Slugify Post URLs
 - [x] Delete tags from posts
-- [ ] Make tags entities - delete, clickable and add same tag to many posts
+- [x] Upgrade to Rails 4
+- [ ] Make tags entities - clickable and add same tag to many posts
 - [ ] Show recent tweets
 - [ ] Show recent tumblr posts
 - [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization

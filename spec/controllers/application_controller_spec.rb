@@ -24,7 +24,7 @@ describe ApplicationController do
 
   describe "#current_user" do
     it "should return the current user if logged in" do
-      @mock_user = mock(:user)
+      @mock_user = double(:user)
       controller.stub(:session) { {current_user: @mock_user} }
 
       controller.current_user.should eq @mock_user

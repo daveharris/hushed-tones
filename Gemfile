@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2'
+gem 'rails', '~> 4.0'
 gem 'sqlite3'
 
 gem 'jquery-rails'
@@ -10,6 +10,16 @@ gem 'letmein'
 gem 'RedCloth'
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'sass-rails',   '~> 4.0'
+gem 'coffee-rails', '~> 4.0'
+
+gem 'uglifier'
+gem 'modernizr-rails'
+
+gem 'protected_attributes' # Remove this in favour of Strong Parameters after Rails 4 upgrade
 
 group :development do
   gem 'thin'
@@ -23,14 +33,4 @@ group :test do
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'timecop'
-end
-
-group :assets do
-  gem 'bootstrap-sass'
-  gem 'bootswatch-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  gem 'uglifier', '>= 1.0.3'
-  gem 'modernizr-rails'
 end

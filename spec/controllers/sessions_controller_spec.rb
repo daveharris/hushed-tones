@@ -5,7 +5,7 @@ describe SessionsController do
   describe "POST create" do
     let(:attributes) { {'name' => 'Test', 'email' => 'test@example.com', 'password' => 'secret'} }
     let(:user) { User.create(attributes) }
-    let(:user_session) { mock(:user_session, :save! => true, user: user) }
+    let(:user_session) { double(:user_session, :save! => true, user: user) }
 
     before(:each) do
       UserSession.stub(:new) { user_session }
@@ -42,7 +42,7 @@ describe SessionsController do
 
   describe "GET destroy" do
     before(:each) do
-      session[:current_user] = mock(:user_session)
+      session[:current_user] = double(:user_session)
     end
 
     it "should delete the user session" do

@@ -14,7 +14,7 @@ describe PostsController do
 
   describe "GET show" do
     it "should assign @post" do
-      Post.stub(:find_by_slug).with('1') { mock_post }
+      Post.stub(:find_by).with(slug: '1') { mock_post }
       get :show, id: '1'
       assigns(:post).should eq mock_post
     end
@@ -30,7 +30,7 @@ describe PostsController do
 
   describe "GET edit" do
     it "should assign @post as new Post" do
-      Post.stub(:find_by_slug) { mock_post }
+      Post.stub(:find_by).with(slug: '1') { mock_post }
       get :edit, id: '1'
       assigns(:post).should eq mock_post
     end
@@ -68,14 +68,14 @@ describe PostsController do
   describe "POST update" do
     before do
       controller.stub(:session) { {current_user: user} }
-      Post.stub(:find_by_slug) { mock_post }
+      Post.stub(:find_by).with(slug: '1') { mock_post }
 
       mock_post.stub(:update_attributes)
       mock_post.stub(:user=).with(user)
     end
 
     it "should find the Post" do
-      Post.should_receive(:find_by_slug).with('1') { mock_post }
+      Post.should_receive(:find_by).with(slug: '1') { mock_post }
       post :update, id: '1'
     end
 
@@ -103,11 +103,11 @@ describe PostsController do
   describe "DELETE destroy" do
     before(:each) do
       controller.stub(:session) { {current_user: user} }
-      Post.stub(:find_by_slug) { mock_post }
+      Post.stub(:find_by).with(slug: '1') { mock_post }
     end
 
     it "should find the Post" do
-      Post.should_receive(:find_by_slug).with('1') { mock_post }
+      Post.should_receive(:find_by).with(slug: '1') { mock_post }
       delete :destroy, id: '1'
     end
 
