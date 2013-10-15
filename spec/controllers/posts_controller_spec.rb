@@ -76,12 +76,12 @@ describe PostsController do
 
     it "should find the Post" do
       Post.should_receive(:find_by).with(slug: '1') { mock_post }
-      post :update, id: '1'
+      post :update, id: '1', post: {title: 'Title'}
     end
 
     it "should set the user on the post" do
       mock_post.should_receive(:user=).with(user)
-      post :update, id: '1'
+      post :update, id: '1', post: {title: 'Title'}
     end
 
     it "should update the Post" do
@@ -90,12 +90,12 @@ describe PostsController do
     end
 
     it "should assign the updated Post to @post" do
-      post :update, id: '1'
+      post :update, id: '1', post: {title: 'Title'}
       assigns(:post).should eq mock_post
     end
 
     it "should redirect to /posts" do
-      post :update, id: '1'
+      post :update, id: '1', post: {title: 'Title'}
       response.should redirect_to post_path(mock_post)
     end
   end
