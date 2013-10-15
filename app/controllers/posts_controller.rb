@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
     @post.user = current_user
 
     @post.save!
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     @post.user = current_user
-    @post.update_attributes(params[:post])
+    @post.update_attributes(post_params)
     redirect_to post_path(@post)
   end
 
@@ -40,5 +40,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find_by(slug: params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:id, :body, :title, :user, :picture, tags_attributes: [:id, :name, :_destroy])
   end
 end

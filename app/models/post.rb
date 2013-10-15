@@ -4,7 +4,6 @@ class Post < ActiveRecord::Base
   
   mount_uploader :picture, PictureUploader
 
-  attr_accessible :body, :title, :tags_attributes, :user, :picture
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
 
   validates :title, :body, :user_id, :slug, presence: true

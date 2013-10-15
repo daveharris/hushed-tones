@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = UserSession.new(params[:user])
+    @session = UserSession.new(user_params)
     @session.save!
     session[:current_user] = @session.user
     flash[:notice] = "Welcome back #{@session.user.name}, you are now logged in!"
@@ -25,6 +25,10 @@ class SessionsController < ApplicationController
 
   private
     def new_user
-      @user = User.new(params[:user])
+      @user = User.new(user_params)
+    end
+
+    def user_params
+      params.fetch(:user, {}).permit(:email, :name, :password)
     end
 end

@@ -15,6 +15,7 @@ A work in progress
 - [x] Slugify Post URLs
 - [x] Delete tags from posts
 - [x] Upgrade to Rails 4
+- [ ] Use rails/strong_parameters
 - [ ] Make tags entities - clickable and add same tag to many posts
 - [ ] Show recent tweets
 - [ ] Show recent tumblr posts

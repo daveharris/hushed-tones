@@ -19,8 +19,6 @@ gem 'coffee-rails', '~> 4.0'
 gem 'uglifier'
 gem 'modernizr-rails'
 
-gem 'protected_attributes' # Remove this in favour of Strong Parameters after Rails 4 upgrade
-
 group :development do
   gem 'thin'
   gem 'quiet_assets'
@@ -29,8 +27,7 @@ group :development do
 end
 
 group :test do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i  
-  gem 'guard-rspec'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i 
   gem 'rspec-rails'
   gem 'timecop'
 end
