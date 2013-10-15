@@ -45,22 +45,22 @@ describe PostsController do
     end
 
     it "should set the attributes on the Post" do
-      Post.should_receive(:new).with({'id' => '1', 'body' => 'body', 'title' => 'title'})
-      post :create, post: {id: '1', body: 'body', title: 'title'}
+      Post.should_receive(:new).with({'body' => 'body', 'title' => 'title'})
+      post :create, post: {body: 'body', title: 'title'}
     end
 
     it "should set the user on the post" do
       mock_post.should_receive(:user=).with(user)
-      post :create, post: {id: '1', body: 'body', title: 'title'}
+      post :create, post: {body: 'body', title: 'title'}
     end
 
     it "should should save the post" do
       mock_post.should_receive(:save!)
-      post :create, post: {id: '1', body: 'body', title: 'title'}
+      post :create, post: {body: 'body', title: 'title'}
     end
 
     it "should redirect to /posts after saving" do
-      post :create, post: {id: '1', body: 'body', title: 'title'}
+      post :create, post: {body: 'body', title: 'title'}
       response.should redirect_to post_path(mock_post)
     end
   end
