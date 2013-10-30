@@ -69,15 +69,37 @@ describe Post do
     end
   end
 
-  describe "#autosave_associated_records_for_tags" do
+  describe "#lookup_existing_tags" do
+    let(:tag) { Tag.create(name: "ruby") }
+
+    before do
+      post.tags = [tag]
+    end
+
+    it "should call lookup_existing_tags before_save" do
+      post.should_receive(:lookup_existing_tags)
+      post.save
+    end
+
     it "should add existing tag if exists in database" do
-      existing_tag = Tag.create(name: "ruby")
       new_tag = Tag.new(name: "rails")
       post.tags = [Tag.new(name: "ruby"), new_tag]
-      post.save!
+      post.save
 
-      post.reload.tags.first.name.should eq 'ruby'
-      post.tags.last.name.should eq 'rails'
+      post.reload.tags.first.should eq tag
+      post.tags.last.should eq new_tag
+    end
+
+    it "should return true to trigger later callbacks" do
+      post.send(:lookup_existing_tags).should eq true
+    end
+
+    it "should not add duplicate tags" do
+      post.tags = [Tag.new(name: "ruby")]
+      post.save
+
+      post.reload.tags.size.should eq 1
+      post.tags.first.should eq tag
     end
   end
 end

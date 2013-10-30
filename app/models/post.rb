@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_and_belongs_to_many :tags, autosave: true
+  has_and_belongs_to_many :tags
   
   mount_uploader :picture, PictureUploader
 
@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   validates :title, :body, :user_id, :slug, presence: true
 
   before_validation :slugify
+  before_save :lookup_existing_tags
 
   def body_html
     RedCloth.new(self.body).to_html if self.body
@@ -31,7 +32,7 @@ class Post < ActiveRecord::Base
   # before_save hook to ensure that existing tags are 
   # looked up rather than re-created
   # See http://stackoverflow.com/questions/9024745
-  def autosave_associated_records_for_tags
+  def lookup_existing_tags
     valid_tags = []
 
     self.tags.each do |tag|
@@ -42,6 +43,7 @@ class Post < ActiveRecord::Base
       end
     end
 
-    self.tags << valid_tags
+    self.tags = valid_tags
+    true
   end
 end
