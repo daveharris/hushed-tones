@@ -34,7 +34,9 @@
         <span class="tags">
           <i class="icon-tags"></i> Tagged with:
           <% post.tags.each do |tag| %>
-            <span class="label label-inverse"><%= tag.name %></span>
+            <span class="label label-inverse">
+              <%= link_to tag.name, tag, class: 'tag' %>
+            </span>
           <% end %>
         </span>
       <% end %>

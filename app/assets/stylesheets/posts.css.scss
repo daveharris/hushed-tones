@@ -11,6 +11,14 @@
     margin-left: 10px;
   }
 
+  a.tag {
+    color: white;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+
   i {
     margin-right: 2px;
   }

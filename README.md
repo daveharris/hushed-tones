@@ -16,7 +16,7 @@ A work in progress
 - [x] Delete tags from posts
 - [x] Upgrade to Rails 4
 - [x] Use rails/strong_parameters
-- [ ] Make tags entities - clickable and add same tag to many posts
+- [x] Make tags entities - clickable and add same tag to many posts
 - [ ] Show recent tweets
 - [ ] Show recent tumblr posts
 - [ ] Upgrade Bootswatch to Bootstrap v3
