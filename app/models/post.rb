@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
     valid_tags = []
 
     self.tags.each do |tag|
-      if existing_tag = Tag.where(name: tag.name).first
+      if existing_tag = Tag.find_by(name: tag.name)
         valid_tags << existing_tag
       else
         valid_tags << tag
