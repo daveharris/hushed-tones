@@ -1,15 +1,14 @@
-<%= link_to "Home", root_path, :class => 'brand' %>
-
-<div class="nav-collapse collapse" id="main-menu">
-  <ul class="nav" id="main-menu-left">
-    <% if user_logged_in? %>
-      <li><%= link_to 'Logout', logout_path %></li>
-    <% else %>
-      <li><%= link_to 'Login', login_path %></li>
-    <% end %>
-</div>
+<%= link_to 'Home', root_path, class: 'brand' %>
 
 <ul class="nav">
-  <a href="http://twitter.com/ewok_13" class="fc-webicon twitter">Tweet Tweet!</a>
-  <a href="http://ewok13.tumblr.com" class="fc-webicon tumblr">Tweet Tweet!</a>
+  <a href="http://twitter.com/ewok_13" class="fc-webicon twitter">Twitter</a>
+  <a href="http://ewok13.tumblr.com" class="fc-webicon tumblr">Tumblr</a>
+</ul>
+
+<ul class="nav pull-right">
+  <% if user_logged_in? %>
+    <li><a href="<%= logout_path %>"><i class="icon-user"></i> Logout</a></li>
+  <% else %>
+    <li><a href="<%= login_path %>"><i class="icon-user"></i> Login</a></li>
+  <% end %>
 </ul>
