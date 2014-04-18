@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "MJ's Blog" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Hushed Tones" %></title>
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <%= javascript_include_tag :modernizr %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -14,33 +15,25 @@
   </head>
 
   <body>
-    <div id="wrap">
-      <header class="navbar navbar-fixed-top">
-        <nav class="navbar-inner">
-          <div class="container">
-            <%= render 'layouts/navigation' %>
-          </div>
-        </nav>
-      </header>
-      
-      <div class="container">
-        <div class="row">
-          <div class="span12">
-            <h1>Welcome to Hushed Tones</h1>
-            <blockquote class="pull-right">
-              <p>Always aim for the Moon, even if you miss, you'll land among the stars</p>
-              <small>W. Clement Stone</small>
-            </blockquote>
-          </div>
+    <%= render 'layouts/navigation' %>
+    
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h1>Welcome to Hushed Tones</h1>
+          <blockquote class="pull-right">
+            <p>Always aim for the Moon, even if you miss, you'll land among the stars</p>
+            <small>W. Clement Stone</small>
+          </blockquote>
         </div>
+      </div>
 
-        <div class="content">
-          <%= render 'layouts/messages' %>
-          <%= yield %>
-        </div>
-      </div> <!-- end of .container -->
-      <div id="push"></div>
-    </div> <!-- end of #wrap -->
+      <div class="content">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div>
+    </div> <!-- end of .container -->
+    
     
     <div id="footer">
       <div class="container">

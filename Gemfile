@@ -5,14 +5,16 @@ gem 'sqlite3'
 
 gem 'jquery-rails'
 
-gem 'letmein'
+gem 'letmein', '~> 0.1.4'
 
 gem 'RedCloth'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem 'bootstrap-sass'
-gem 'bootswatch-rails'
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+#gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'
+
 gem 'sass-rails',   '~> 4.0'
 gem 'coffee-rails', '~> 4.0'
 

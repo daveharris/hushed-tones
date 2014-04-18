@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require_tree .
+//= require spacelab/loader
+//= require spacelab/bootswatch
+
+

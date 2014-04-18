@@ -15,10 +15,12 @@ A work in progress
 - [x] Slugify Post URLs
 - [x] Delete tags from posts
 - [x] Upgrade to Rails 4
+- [x] Upgrade to Rails 4.1
+- [x] Upgrade Bootswatch to Bootstrap v3
 - [x] Use rails/strong_parameters
 - [x] Make tags entities - clickable and add same tag to many posts
+- [ ] Add tags to top nav bar
 - [ ] Show recent tweets
 - [ ] Show recent tumblr posts
-- [ ] Upgrade Bootswatch to Bootstrap v3
 - [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization
 - [ ] Add [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages

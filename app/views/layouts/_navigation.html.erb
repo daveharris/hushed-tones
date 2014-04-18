@@ -1,14 +1,25 @@
-<%= link_to 'Home', root_path, class: 'brand' %>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to 'Hushed Tones', root_path, class: 'navbar-brand' %>
+  </div>
 
-<ul class="nav">
-  <a href="http://twitter.com/ewok_13" class="fc-webicon twitter">Twitter</a>
-  <a href="http://ewok13.tumblr.com" class="fc-webicon tumblr">Tumblr</a>
-</ul>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="http://twitter.com/ewok_13">Twitter</a></li>
+      <li><a href="http://ewok13.tumblr.com">Tumblr</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_logged_in? %>
+        <p class="navbar-text">Logged in as <%= link_to current_user.name, class: 'btn btn-default navbar-btn' %></p>
+      <% else %>
+        <%= link_to 'Login', login_path, class: 'btn btn-default navbar-btn' %>
+      <% end %>
+    </ul>
+  </div><!--/.nav-collapse -->
 
-<ul class="nav pull-right">
-  <% if user_logged_in? %>
-    <li><a href="<%= logout_path %>"><i class="icon-user"></i> Logout</a></li>
-  <% else %>
-    <li><a href="<%= login_path %>"><i class="icon-user"></i> Login</a></li>
-  <% end %>
-</ul>
+</nav>
