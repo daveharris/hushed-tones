@@ -1,6 +1,6 @@
 // From http://twitter.github.io/bootstrap/examples/sticky-footer-navbar.html
 
-$footer-height: 60px;
+@footer-height: 60px;
 
 html, body {
   height: 100%;
@@ -10,15 +10,15 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto (-$footer-height);
+  margin: 0 auto (-@footer-height);
 }
 
 #wrap > .container {
-  padding-top: $footer-height;
+  padding-top: @footer-height;
 }
 
 #push, #footer {
-  height: $footer-height;
+  height: @footer-height;
 }
 
 #footer {
