@@ -13,6 +13,7 @@ gem 'mini_magick'
 
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 #gem 'twitter-bootswatch-rails-helpers'
+gem 'twitter-bootswatch-rails-fontawesome'
 gem 'therubyracer'
 
 gem 'sass-rails',   '~> 4.0'

@@ -12,7 +12,7 @@
     </div>
     <div class="col-md-4">
       <h4 class="pull-right">
-        Posted by <%= post.user.name %> at <%= post.display_date %>
+        <i class="fa fa-pencil"></i> <%= post.user.name %> <i class="fa fa-clock-o"></i> <%= post.display_date %>
       </h4>
     </div>
   </div>
@@ -24,6 +24,7 @@
   <% end %>
 
   <% if post.tags.any? %>
+    <i class="fa fa-tags"></i>
     <span class="tags">
       <i class="icon-tags"></i> Tagged with:
       <% post.tags.each do |tag| %>
