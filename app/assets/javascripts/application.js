@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require spacelab/loader
-//= require spacelab/bootswatch
-
-
+//= require flatly/loader
+//= require flatly/bootswatch

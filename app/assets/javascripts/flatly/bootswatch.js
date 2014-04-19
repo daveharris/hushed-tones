@@ -1,3 +1,3 @@
-// Spacelab
+// Flatly
 // Bootswatch
 // bootswatch.js

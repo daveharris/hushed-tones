@@ -1,45 +1,37 @@
 <div class="post">
-  <h2 class="row">
-    <div class="span9">
-      <%= link_to post.title, post, class: 'pull-left' %>
-
-      <% if user_logged_in? %>
-        <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-small btn-primary btn-edit' %>
-        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger' %>
-      <% end %>
-    </div>
-
-    <div class="span3">
-      <small class="pull-right">posted <%= post.display_date %></small>
-    </div>
-  </h2>
-
   <div class="row">
-    <span class="span12"><%= post.body_html.try(:html_safe) %></span>
+    <div class="col-md-8">
+      <h2>
+        <%= link_to post.title, post %>
+
+        <% if user_logged_in? %>
+          <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-xs btn-primary btn-edit' %>
+          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+        <% end %>
+      </h2>
+    </div>
+    <div class="col-md-4">
+      <h4 class="pull-right">
+        Posted by <%= post.user.name %> at <%= post.display_date %>
+      </h4>
+    </div>
   </div>
 
+  <p><%= post.body_html.try(:html_safe) %></p>
+
   <% if post.picture? %>
-    <div class="row">
-      <span class="span12"><%= image_tag(post.picture.url) %></span>
-    </div>
+    <div><%= image_tag(post.picture.url) %></div>
   <% end %>
 
-  <div class="row">
-    <span class="span12">
-      <span class="author">
-        <i class="icon-pencil"></i>Posted by <%= post.user.name %>
-      </span>
-
-      <% if post.tags.any? %>
-        <span class="tags">
-          <i class="icon-tags"></i> Tagged with:
-          <% post.tags.each do |tag| %>
-            <span class="label label-inverse">
-              <%= link_to tag.name, tag, class: 'tag' %>
-            </span>
-          <% end %>
+  <% if post.tags.any? %>
+    <span class="tags">
+      <i class="icon-tags"></i> Tagged with:
+      <% post.tags.each do |tag| %>
+        <span class="label label-info">
+          <%= link_to tag.name, tag, class: 'tag' %>
         </span>
       <% end %>
     </span>
-  </div>
+  <% end %>
+
 </div>

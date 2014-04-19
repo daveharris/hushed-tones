@@ -9,8 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require spacelab/loader
- *= require spacelab/bootswatch
+ *= require flatly/loader
+ *= require flatly/bootswatch
+ *= require navigation
+ *= require posts
+ *= require sticky_footer
  */
 
 html {

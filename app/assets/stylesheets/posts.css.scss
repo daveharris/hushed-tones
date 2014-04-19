@@ -3,28 +3,20 @@
     margin-left: 10px;
   }
 
-  h2 small {
-    line-height: 42px;
-  }
-
   .tags {
     margin-left: 10px;
-  }
 
-  a.tag {
-    color: white;
-
-    &:hover, &:focus {
-      text-decoration: none;
+    .label {
+      margin-left: 5px;
     }
-  }
 
-  i {
-    margin-right: 2px;
-  }
+    a.tag {
+      color: white;
 
-  img {
-    margin: 0 0 10.5px;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
   }
 }
 

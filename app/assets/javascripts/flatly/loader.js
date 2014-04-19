@@ -1,4 +1,4 @@
-// Spacelab
+// Flatly
 // Bootswatch
 // loader.js
 
