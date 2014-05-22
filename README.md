@@ -19,7 +19,7 @@ A work in progress
 - [x] Upgrade Bootswatch to Bootstrap v3
 - [x] Use rails/strong_parameters
 - [x] Make tags entities - clickable and add same tag to many posts
-- [ ] Add tags to top nav bar
+- [x] Add tags to top nav bar
 - [ ] Show recent tweets
 - [ ] Show recent tumblr posts
 - [ ] Consider moving to [Clearance](https://github.com/thoughtbot/clearance) for authentication and authorization

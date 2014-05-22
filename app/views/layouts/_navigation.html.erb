@@ -1,21 +1,29 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="navbar-header">
     <%= link_to 'Hushed Tones', root_path, class: 'navbar-brand' %>
   </div>
 
   <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav social">
       <li><a href="http://twitter.com/ewok_13"><i class="fa fa-twitter fa-2x"></i></a></li>
       <li><a href="http://ewok13.tumblr.com"><i class="fa fa-tumblr fa-2x"></i></a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="tags">Tags <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <%= content_tag_for(:li, @tags) do |tag| %>
+            <%= link_to tag.name, tag %>
+          <% end %> 
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" id="user-login">
       <% if user_logged_in? %>
         <div>
           <span class="navbar-text"><i class="fa fa-user fa-2x"></i> Logged in as <%= current_user.name %></span>
-          <%= link_to "Logout" , logout_path, class: 'btn btn-default navbar-btn' %>
+          <%= link_to "Logout" , logout_path, class: 'btn btn-sm btn-default navbar-btn' %>
         </div>
       <% else %>
-        <%= link_to 'Login', login_path, class: 'btn btn-default navbar-btn' %>
+        <%= link_to 'Login', login_path, class: 'btn btn-sm btn-default navbar-btn' %>
       <% end %>
     </ul>
   </div>
