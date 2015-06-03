@@ -2,4 +2,22 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  # en-NZ date formats from https://github.com/svenfuchs/rails-i18n
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+    formats:
+      default: "%d-%m-%Y"
+      long: "%d %B, %Y"
+      short: "%d %b"
+  time:
+    formats:
+      default: "%d %b %I:%M %p"
+      long: "%d %B, %Y %H:%M"
+      short: "%d %b %H:%M"
+  activerecord:
+    attributes:
+      post:
+        tag_ids: Tags

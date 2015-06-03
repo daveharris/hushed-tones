@@ -7,25 +7,24 @@ describe TagsController do
     let(:posts) { [double(:post)] }
 
     it "should find the tag by name" do
-      Tag.should_receive(:find_by).with(name: 'ruby') { tag }
+      expect(Tag).to receive(:find_by).with(name: 'ruby') { tag }
       get :show, id: 'ruby'
-      assigns(:tag).should eq tag
+      expect(assigns(:tag)).to eq tag
     end
 
     it "should assign the Posts with the tag as @posts" do
-      Tag.stub(:find_by) { double(:tag, posts: posts) }
+      allow(Tag).to receive(:find_by) { double(:tag, posts: posts) }
       get :show, id: 'ruby'
-      assigns(:posts).should eq posts
+      expect(assigns(:posts)).to eq posts
     end
 
     context "tag not found" do
       before do
-        Tag.stub(:find_by) { nil }
+        allow(Tag).to receive(:find_by) { nil }
       end
 
       it "should show the 404 page" do
-        get :show, id: 'ruby'
-        response.should redirect_to '/404'
+        expect { get :show, id: 'ruby' }.to raise_error(ActionController::RoutingError)
       end
     end
   end

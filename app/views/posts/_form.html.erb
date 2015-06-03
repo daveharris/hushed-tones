@@ -9,10 +9,8 @@
   <%= f.text_field :title %>
   <%= f.text_area :body, class: 'input-xxlarge' %>
   <%= f.file_field :picture %>
- 
-    
-  <h3>Tags</h3>
-  <%= render :partial => 'tags/form', locals: {form: f} %>
+  
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
 
   <div class="actions">
     <%= f.submit %>

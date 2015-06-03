@@ -8,35 +8,35 @@ describe SessionsController do
     let(:user_session) { double(:user_session, :save! => true, user: user) }
 
     before(:each) do
-      UserSession.stub(:new) { user_session }
+      allow(UserSession).to receive(:new) { user_session }
     end
 
     it "should login with the authentication details provided" do
-      UserSession.should_receive(:new).with(attributes) { user_session }
+      expect(UserSession).to receive(:new).with(attributes) { user_session }
       post :create, user: attributes
     end
 
     it "should set the logged in user in the session" do
       post :create, user: attributes
-      session[:current_user].should eq user
+      expect(session[:current_user]).to eq user
     end
 
     it "should redirect to the homepage" do
       post :create, user: attributes
-      request.should redirect_to root_path
+      expect(request).to redirect_to root_path
     end
 
     it "should display an error message if incorrect credentials" do
-      user_session.stub(:save!).and_raise(LetMeIn::Error)
+      allow(user_session).to receive(:save!).and_raise(LetMeIn::Error)
       post :create, user: attributes
-      flash.now[:error].should be_present
-      request.should render_template('sessions/new')
+      expect(flash.now[:error]).to be_present
+      expect(request).to render_template('sessions/new')
     end
 
     it "should render the new template if incorrect credentials" do
-      user_session.stub(:save!).and_raise(LetMeIn::Error)
+      allow(user_session).to receive(:save!).and_raise(LetMeIn::Error)
       post :create, user: attributes
-      request.should render_template('sessions/new')
+      expect(request).to render_template('sessions/new')
     end
   end
 
@@ -47,18 +47,18 @@ describe SessionsController do
 
     it "should delete the user session" do
       get :destroy
-      session[:current_user].should be_nil
+      expect(session[:current_user]).to be_nil
     end
 
     it "should redirect to the homepage" do
       get :destroy
-      flash.now[:notice].should be_present
-      request.should redirect_to root_path
+      expect(flash.now[:notice]).to be_present
+      expect(request).to redirect_to root_path
     end
 
     it "should display a message" do
       get :destroy
-      flash.now[:notice].should be_present
+      expect(flash.now[:notice]).to be_present
     end
   end
 end
