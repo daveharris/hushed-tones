@@ -8,14 +8,22 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require_tree .
  *= require_self
- *= require flatly/loader
- *= require flatly/bootswatch
- *= require flatly/font-awesome
- *= require navigation
- *= require posts
- *= require sticky_footer
  */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+ // import the CSS framework
+@import "bootstrap-sprockets";
+
+// @import "bootswatch/cosmo_variables.scss";
+// @import "bootswatch/lumen_variables.scss";
+// @import "bootswatch/united_variables.scss";
+// @import "bootswatch/yeti_variables.scss";
+
+@import "bootstrap";
 
 html {
   overflow-y: scroll;

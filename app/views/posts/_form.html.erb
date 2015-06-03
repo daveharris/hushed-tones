@@ -1,43 +1,21 @@
 <% @post.tags.build %>
-<%= form_for(@post, html: {id: 'edit-post', class: 'form-horizontal well span9', multipart: true}) do |post_form| %>
-  <% if @post.errors.any? %>
-    <div id="errorExplanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+<%= bootstrap_form_for(@post, layout: :horizontal, label_col: 'col-sm-3', control_col: 'col-sm-6', html: {id: 'edit-post', class: 'form-horizontal well span9', multipart: true}) do |f| %>
+  
+  <div class="row">
+    <div class="col-sm-9"><%= f.alert_message "Please fix the errors below." %></div>
+  </div>
+
+  <%= f.text_field :title %>
+  <%= f.text_area :body, class: 'input-xxlarge' %>
+  <%= f.file_field :picture %>
  
-  <fieldset>
-    <div class="control-group">
-      <%= post_form.label :title, class: 'control-label' %>
-      <div class="controls">
-        <%= post_form.text_field :title, class: 'input-xxlarge' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= post_form.label :body, class: 'control-label' %>
-      <div class="controls">
-        <%= post_form.text_area :body, class: 'input-xxlarge' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= post_form.label :picture, class: 'control-label' %>
-      <div class="controls">
-        <%= post_form.file_field :picture %>
-      </div>
-    </div>
     
-    <h3>Tags</h3>
-    <%= render :partial => 'tags/form', locals: {form: post_form} %>
+  <h3>Tags</h3>
+  <%= render :partial => 'tags/form', locals: {form: f} %>
 
-    <div class="actions">
-      <%= post_form.submit %>
-    </div>
-  </fieldset>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 <% end %>

@@ -1,12 +1,8 @@
-<%= form.fields_for(:tags) do |tag_form| %>
-  <div class="control-group">
-    <%= tag_form.label :name, 'Tag:', class: 'control-label' %>
+<%= form.fields_for(:tags) do |t| %>
+  <%= t.text_field :name, class: 'input-small' %>
     <div class="controls">
-      <%= tag_form.text_field :name, class: 'input-small' %>
-      <% unless tag_form.object.nil? || tag_form.object.new_record? %>
-        <%= tag_form.label :_destroy, 'Remove', class: 'checkbox' %>
-        <%= tag_form.check_box :_destroy %>
+      <% unless t.object.nil? || t.object.new_record? %>
+        <%= t.check_box :_destroy, label: 'Remove', class: 'checkbox' %>
       <% end %>
     </div>
-  </div>
 <% end %>

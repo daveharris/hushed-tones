@@ -1,0 +1,31 @@
+// From http://getbootstrap.com/examples/sticky-footer-navbar
+
+@import "bootstrap/variables";
+$footer-height: 60px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+html > body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer-height;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: $footer-height;
+  background-color: $navbar-default-bg;
+  border-color: $navbar-default-border;
+}
+
+body > .container {
+  padding-bottom: 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}

@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0'
 gem 'sqlite3'
 
-gem 'jquery-rails'
 
 gem 'letmein', '~> 0.1.4'
 
@@ -11,16 +10,15 @@ gem 'RedCloth'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem 'twitter-bootswatch-rails', '~> 3.1.1'
-#gem 'twitter-bootswatch-rails-helpers'
-gem 'twitter-bootswatch-rails-fontawesome'
-gem 'therubyracer'
-
+gem 'bootstrap-sass'
+gem 'bootstrap_form'
+gem 'font-awesome-sass'
 gem 'sass-rails',   '~> 4.0'
-gem 'coffee-rails', '~> 4.0'
-
-gem 'uglifier'
 gem 'modernizr-rails'
+
+gem 'jquery-rails'
+gem 'therubyracer'
+gem 'uglifier'
 
 group :development do
   gem 'thin'

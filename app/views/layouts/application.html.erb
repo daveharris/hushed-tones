@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Hushed Tones" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : APP_NAME %></title>
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <%= javascript_include_tag :modernizr %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -21,8 +20,10 @@
       <%= render 'layouts/messages' %>
 
       <div class="row">
-        <div class="col-md-12">
-          <h1>Welcome to Hushed Tones</h1>
+        <div class="col-md-4">
+          <%= content_tag(:h1, APP_NAME) %>
+        </div>
+        <div class="col-md-8">
           <blockquote class="pull-right">
             <p>Always aim for the Moon, even if you miss, you'll land among the stars</p>
             <small>W. Clement Stone</small>
@@ -36,13 +37,13 @@
     </div> <!-- end of .container -->
     
     
-    <div id="footer">
+    <footer class="footer">
       <div class="container">
-        <p class="muted credit">
+        <p class="text-muted">
           Lovingly crafted by <%= link_to 'Dave Harris', 'http://twitter.com/daveharrisnz'%> using <%= link_to 'Ruby on Rails', 'http://rubyonrails.org' %> and <%= link_to 'Bootstrap', 'http://getbootstrap.com/' %> / <%= link_to 'Bootswatch', 'http://bootswatch.com/2' %>
         </p>
       </div>
-    </div> <!-- end of #footer -->
+    </footer> <!-- end of #footer -->
 
   </body>
 </html>
