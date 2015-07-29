@@ -2,7 +2,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :tags
   
-  mount_uploader :picture, PictureUploader
+  # mount_uploader :picture, FilesystemUploader
+  mount_uploader :picture, DropboxUploader
 
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
 

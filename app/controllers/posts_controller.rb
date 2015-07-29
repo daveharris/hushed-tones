@@ -22,14 +22,21 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
 
-    @post.save!
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to @post, notice: "#{@post.to_s} was successfully created."
+    else
+      render :new
+    end
   end
 
   def update
     @post.user = current_user
-    @post.update_attributes(post_params)
-    redirect_to post_path(@post)
+
+    if @post.update(post_params)
+      redirect_to @post, notice: "#{@post.to_s} was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy

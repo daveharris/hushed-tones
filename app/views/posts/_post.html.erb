@@ -20,7 +20,7 @@
   <p><%= post.body_html.try(:html_safe) %></p>
 
   <% if post.picture? %>
-    <div><%= image_tag(post.picture.url) %></div>
+    <div><%= image_tag(post.picture.public_url) %></div>
   <% end %>
 
   <% if post.tags.any? %>

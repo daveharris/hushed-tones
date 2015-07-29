@@ -1,13 +1,13 @@
 <% @post.tags.build %>
 
-<%= bootstrap_form_for(@post, layout: :horizontal, label_col: 'col-sm-3', control_col: 'col-sm-6', html: {id: 'edit-post', class: 'form-horizontal well span9', multipart: true}) do |f| %>
+<%= bootstrap_form_for(@post, layout: :horizontal, label_col: 'col-sm-1', control_col: 'col-sm-11', html: {id: 'edit-post', class: 'form-horizontal well span9', multipart: true}) do |f| %>
   
   <div class="row">
     <div class="col-sm-9"><%= f.alert_message "Please fix the errors below." %></div>
   </div>
 
   <%= f.text_field :title %>
-  <%= f.text_area :body, class: 'input-xxlarge' %>
+  <%= f.text_area :body, class: 'input-xxlarge', help: "The body of the post is formatted using #{link_to('Markdown', 'https://guides.github.com/features/mastering-markdown')} syntax".html_safe %>
   <%= f.file_field :picture %>
   
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>

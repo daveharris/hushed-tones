@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0'
 gem 'sqlite3'
 
-
-gem 'letmein', '~> 0.1.4'
+gem 'letmein'
 
 gem 'RedCloth'
 gem 'carrierwave'
+gem 'carrierwave-dropbox'
 gem 'mini_magick'
 
 gem 'bootstrap-sass'

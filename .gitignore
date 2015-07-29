@@ -1,4 +1,6 @@
 /.bundle
+.gems/
+.rbenv-vars
 /db/*.sqlite3
 /log/*.log
 /tmp
